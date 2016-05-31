@@ -1,0 +1,29 @@
+{
+  "name": "Pesian-Ionic-Datepicker",
+  "version": "1.1.0",
+  "authors": [
+    "loopers Agile(atutunchi@kasraco.ir"
+  ],
+  "description": "A persian and gregorian datepicker",
+  "main": [
+    "./dist/ionic-datepicker.bundle.min.js"
+  ],
+  "keywords": [
+    "ionic-datepicker",
+    "ionic",
+    "persian-date-picker",
+    "persian-ionic-datepicker"
+  ],
+  "license": "MIT",
+  "homepage": "www.kasraco.ir",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ionic": ">=0.9.27"
+  }
+}
