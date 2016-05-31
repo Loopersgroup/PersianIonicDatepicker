@@ -428,7 +428,6 @@ angular.module('ionic-datepicker.provider', [])
           } else {
             $scope.monthsList = IonicDatepickerService.monthsList;
           }
-          debugger;
           $scope.yearsList = IonicDatepickerService.getYearsList($scope.mainObj.from, $scope.mainObj.to,$scope.mainObj.lanq);
 
           $scope.dayList = [];
