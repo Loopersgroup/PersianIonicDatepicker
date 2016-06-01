@@ -4,7 +4,7 @@
     <div class="row show_nav">
       <div class="col-10 prev_btn_section">
         <button class="button-clear" ng-click="prevMonth()" ng-class="{'pointer_events_none':((firstDayEpoch - 86400000) < fromDate)}">
-        <i class="icon ion-chevron-left"></i>
+        <i class="icon ion-chevron-right"></i>
       </button>
       </div>
       <div class="col-80 text-center">
@@ -12,7 +12,7 @@
           <div class="col-50 padding_right_5px">
             <label class="item item-input item-select month_select">
             <span class="input-label">&nbsp;</span>
-            <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)">
+            <select ng-model="currentMonth" ng-change="monthChanged(currentMonth)" style="right:18px;">
               <option ng-repeat="month in monthsList" ng-selected="month==currentMonthSelected" value="{{month}}">
                 {{month}}
               </option>
@@ -30,7 +30,7 @@
       </div>
       <div class="col-10 next_btn_section">
         <button class="button-clear" ng-click="nextMonth()" ng-class="{'pointer_events_none':((lastDayEpoch + 86400000)> toDate)}">
-        <i class="icon ion-chevron-right"></i>
+        <i class="icon ion-chevron-left"></i>
       </button>
       </div>
     </div>

@@ -6,8 +6,7 @@ angular.module('ionic-datepicker.provider', [])
 
     var config = {
 
-      weeksList: ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'],
-      monthsList: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
+     
       templateType: 'popup',
       setLabel: 'Set',
       todayLabel: 'Today',
@@ -19,10 +18,14 @@ angular.module('ionic-datepicker.provider', [])
       showTodayButton: false,
       closeOnSelect: false,
       disableWeekdays: [],
-      lanq: true   // true for persian calendar and false for georgian calendar
+      lanq: true,   // true for persian calendar and false for georgian calendar
+      
+      weeksList: ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'],
+      monthsList: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
+      
     };
 
-    if (localStorage.getItem('lanq') != 'fa') {
+    if (localStorage.getItem('NG_TRANSLATE_LANG_KEY') != 'fa') {
       config.lanq = false;
       config.weeksList = ["S", "M", "T", "W", "T", "F", "S"];
       config.monthsList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
@@ -338,6 +341,7 @@ angular.module('ionic-datepicker.provider', [])
 
       //Refresh the list of the dates of a month
       function refreshDateList(currentDate) {
+        debugger;
         if ($scope.mainObj.lanq) {
           currentDate = resetHMSM(currentDate);
           $scope.currentDate = angular.copy(currentDate);
@@ -428,6 +432,7 @@ angular.module('ionic-datepicker.provider', [])
           } else {
             $scope.monthsList = IonicDatepickerService.monthsList;
           }
+          debugger;
           $scope.yearsList = IonicDatepickerService.getYearsList($scope.mainObj.from, $scope.mainObj.to,$scope.mainObj.lanq);
 
           $scope.dayList = [];
@@ -527,7 +532,7 @@ angular.module('ionic-datepicker.provider', [])
         setDisabledDates($scope.mainObj);
       }
 
-      $ionicModal.fromTemplateUrl('lib/ionic-datepicker/src/ionic-datepicker-modal.html', {
+      $ionicModal.fromTemplateUrl('lib/Persian-Ionic-Datepicker/src/ionic-datepicker-modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
       }).then(function (modal) {
@@ -555,7 +560,7 @@ angular.module('ionic-datepicker.provider', [])
       provider.openDatePicker = function (ipObj) {
         var buttons = [];
       
-         if(localStorage.getItem('lanq')!='fa'){
+         if(localStorage.getItem('NG_TRANSLATE_LANG_KEY')!='fa'){
           ipObj.lanq = false;
           $scope.jl = false;
         }
@@ -611,7 +616,7 @@ angular.module('ionic-datepicker.provider', [])
 
         if ($scope.mainObj.templateType.toLowerCase() == 'popup') {
           $scope.popup = $ionicPopup.show({
-            templateUrl: 'lib/ionic-datepicker/src/ionic-datepicker-popup.html',
+            templateUrl: 'lib/Persian-Ionic-Datepicker/src/ionic-datepicker-popup.html',
             scope: $scope,
             cssClass: 'ionic_datepicker_popup',
             buttons: buttons

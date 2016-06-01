@@ -1,0 +1,38 @@
+{
+  "name": "Persian-Ionic-Datepicker",
+  "authors": [
+    "loopers Agile(atutunchi@kasraco.ir"
+  ],
+  "description": "A persian and gregorian datepicker",
+  "main": [
+    "./dist/ionic-datepicker.bundle.min.js"
+  ],
+  "keywords": [
+    "ionic-datepicker",
+    "ionic",
+    "persian-date-picker",
+    "persian-ionic-datepicker"
+  ],
+  "license": "MIT",
+  "homepage": "www.kasraco.ir",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ionic": ">=0.9.27"
+  },
+  "_release": "929260cd86",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "929260cd86e0a9088ce8f77237300744a76e318d"
+  },
+  "_source": "https://github.com/Loopersgroup/PersianIonicDatepicker.git",
+  "_target": "*",
+  "_originalSource": "loopersDatepicker",
+  "_direct": true
+}
