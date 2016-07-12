@@ -341,7 +341,6 @@ angular.module('ionic-datepicker.provider', [])
 
       //Refresh the list of the dates of a month
       function refreshDateList(currentDate) {
-        debugger;
         if ($scope.mainObj.lanq) {
           currentDate = resetHMSM(currentDate);
           $scope.currentDate = angular.copy(currentDate);
@@ -432,7 +431,6 @@ angular.module('ionic-datepicker.provider', [])
           } else {
             $scope.monthsList = IonicDatepickerService.monthsList;
           }
-          debugger;
           $scope.yearsList = IonicDatepickerService.getYearsList($scope.mainObj.from, $scope.mainObj.to,$scope.mainObj.lanq);
 
           $scope.dayList = [];
