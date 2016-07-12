@@ -25,7 +25,7 @@ angular.module('ionic-datepicker.provider', [])
       
     };
 
-    if (localStorage.getItem('NG_TRANSLATE_LANG_KEY') != 'fa') {
+    if (localStorage.getItem('calendarType') != 'shamsi') {
       config.lanq = false;
       config.weeksList = ["S", "M", "T", "W", "T", "F", "S"];
       config.monthsList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
@@ -341,7 +341,6 @@ angular.module('ionic-datepicker.provider', [])
 
       //Refresh the list of the dates of a month
       function refreshDateList(currentDate) {
-        debugger;
         if ($scope.mainObj.lanq) {
           currentDate = resetHMSM(currentDate);
           $scope.currentDate = angular.copy(currentDate);
@@ -432,7 +431,6 @@ angular.module('ionic-datepicker.provider', [])
           } else {
             $scope.monthsList = IonicDatepickerService.monthsList;
           }
-          debugger;
           $scope.yearsList = IonicDatepickerService.getYearsList($scope.mainObj.from, $scope.mainObj.to,$scope.mainObj.lanq);
 
           $scope.dayList = [];
@@ -560,7 +558,7 @@ angular.module('ionic-datepicker.provider', [])
       provider.openDatePicker = function (ipObj) {
         var buttons = [];
       
-         if(localStorage.getItem('NG_TRANSLATE_LANG_KEY')!='fa'){
+         if(localStorage.getItem('calendarType')!='shamsi'){
           ipObj.lanq = false;
           $scope.jl = false;
         }
