@@ -25,7 +25,7 @@ angular.module('ionic-datepicker.provider', [])
       
     };
 
-    if (localStorage.getItem('NG_TRANSLATE_LANG_KEY') != 'fa') {
+    if (localStorage.getItem('calendarType') != 'shamsi') {
       config.lanq = false;
       config.weeksList = ["S", "M", "T", "W", "T", "F", "S"];
       config.monthsList = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
@@ -560,7 +560,7 @@ angular.module('ionic-datepicker.provider', [])
       provider.openDatePicker = function (ipObj) {
         var buttons = [];
       
-         if(localStorage.getItem('NG_TRANSLATE_LANG_KEY')!='fa'){
+         if(localStorage.getItem('calendarType')!='shamsi'){
           ipObj.lanq = false;
           $scope.jl = false;
         }
