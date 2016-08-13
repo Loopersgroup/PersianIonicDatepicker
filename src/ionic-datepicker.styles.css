@@ -44,7 +44,7 @@
   color: black;
   font-weight: bold;
 }
-.ionic_datepicker_popup .holiday{
+.ionic_datepicker_popup .holiday, .ionic_datepicker_popup .friday{
   background-color: palevioletred;
   color: white;
 }
