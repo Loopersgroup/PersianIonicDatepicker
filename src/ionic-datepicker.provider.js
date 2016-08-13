@@ -373,8 +373,8 @@ angular.module('ionic-datepicker.provider', [])
           $scope.dayList = [];
 
           var tempDate, disabled;
-          $scope.firstDayEpoch = resetHMSM(new Date(firstDay.getFullYear(), firstDay.getMonth(), firstDay.getDate())).getTime();
-          $scope.lastDayEpoch = resetHMSM(new Date(lastDay.getFullYear(), lastDay.getMonth(), lastDay.getDate())).getTime();
+          $scope.firstDayEpoch = resetHMSM(new Date(firstDay)).getTime();
+          $scope.lastDayEpoch = resetHMSM(new Date(lastDay)).getTime();
 
           $scope.tempFirst = $scope.firstDayEpoch;
           $scope.tempLast = $scope.lastDayEpoch;
@@ -382,7 +382,11 @@ angular.module('ionic-datepicker.provider', [])
           for (var i = $scope.tempFirst; i <= $scope.tempLast; i += 86400000) {
             tempDate = new Date(i);
             disabled = (tempDate.getTime() < $scope.fromDate) || (tempDate.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(tempDate.getDay()) >= 0;
-
+            if(tempDate.toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1] == 'GMT+0430 (Iran Daylight Time)')
+             {
+               i = tempDate.setHours(0,0,0,0);
+               tempDate = new Date(tempDate);
+             }
             $scope.dayList.push({
               date: tempDate.getDate(),
               month: tempDate.getMonth(),
@@ -436,18 +440,13 @@ angular.module('ionic-datepicker.provider', [])
           $scope.dayList = [];
 
           var tempDate, disabled;
-          $scope.firstDayEpoch = resetHMSM(new Date(firstDay)).getTime();
-          $scope.lastDayEpoch = resetHMSM(new Date(lastDay)).getTime();
+          $scope.firstDayEpoch = resetHMSM(new Date(firstDay.getFullYear(), firstDay.getMonth(), firstDay.getDate())).getTime();
+          $scope.lastDayEpoch = resetHMSM(new Date(lastDay.getFullYear(), lastDay.getMonth(), lastDay.getDate())).getTime();
+
 
           for (var i = firstDay; i <= lastDay; i++) {
             tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
             disabled = (tempDate.getTime() < $scope.fromDate) || (tempDate.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(tempDate.getDay()) >= 0;
-
-             if(tempDate.toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1] == 'GMT+0430 (Iran Daylight Time)')
-             {
-               i = tempDate.setHours(0,0,0,0);
-               tempDate = new Date(tempDate);
-             }
             $scope.dayList.push({
               date: tempDate.getDate(),
               month: tempDate.getMonth(),
