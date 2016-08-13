@@ -436,13 +436,18 @@ angular.module('ionic-datepicker.provider', [])
           $scope.dayList = [];
 
           var tempDate, disabled;
-          $scope.firstDayEpoch = resetHMSM(new Date(currentDate.getFullYear(), currentDate.getMonth(), firstDay)).getTime();
-          $scope.lastDayEpoch = resetHMSM(new Date(currentDate.getFullYear(), currentDate.getMonth(), lastDay)).getTime();
+          $scope.firstDayEpoch = resetHMSM(new Date(firstDay)).getTime();
+          $scope.lastDayEpoch = resetHMSM(new Date(lastDay)).getTime();
 
           for (var i = firstDay; i <= lastDay; i++) {
             tempDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
             disabled = (tempDate.getTime() < $scope.fromDate) || (tempDate.getTime() > $scope.toDate) || $scope.mainObj.disableWeekdays.indexOf(tempDate.getDay()) >= 0;
 
+             if(tempDate.toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1] == 'GMT+0430 (Iran Daylight Time)')
+             {
+               i = tempDate.setHours(0,0,0,0);
+               tempDate = new Date(tempDate);
+             }
             $scope.dayList.push({
               date: tempDate.getDate(),
               month: tempDate.getMonth(),
