@@ -42,44 +42,61 @@ angular.module('ionic-datepicker.provider', [])
       var $scope = $rootScope.$new();
       $scope.today = resetHMSM(new Date()).getTime();
       $scope.disabledDates = [];
-      $rootScope.holiDays=[];
-      function getHoliDays(){
-                    
-            var AJAX_req = new XMLHttpRequest();
-            AJAX_req.open("GET", "jsons/holidays.json", true);
-            AJAX_req.setRequestHeader("Content-type", "application/json");
-            AJAX_req.onreadystatechange = function () {
-                if (AJAX_req.readyState == 4 && AJAX_req.status == 200) {
-                    
-                    var js = JSON.parse(AJAX_req.responseText);
-                   
-                    js.holidays.forEach(function(element) {
-                      var tempDate = new Date(element.split('/')[0],element.split('/')[1]-1,element.split('/')[2],0,0,0,0);
-                      var i = tempDate.getTime();
-                      if(tempDate.toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1] == 'GMT+0430 (Iran Daylight Time)')
-                      {
-                          i = tempDate.setHours(0,0,0,0);
-                         
-                      }
-                      $rootScope.holiDays.push(i); 
-                    });
-                }
-            }
-            AJAX_req.send();
-        
+      $rootScope.holiDays = [];
+      function getHoliDays() {
+        var js = {
+          "holidays": [
+            "2016/03/20 ",
+            "2016/03/22",
+            "2016/03/21",
+            "2016/03/23",
+            "2016/05/05",
+            "2016/03/31",
+            "2016/04/21",
+            "2016/04/01",
+            "2016/06/03 ",
+            "2016/05/22",
+            "2016/06/04",
+            "2016/06/27",
+            "2016/07/06",
+            "2016/07/07",
+            "2016/07/30",
+            "2016/09/12",
+            "2016/09/20",
+            "2016/10/12",
+            "2016/10/11",
+            "2016/11/28",
+            "2016/12/17",
+            "2016/11/20",
+            "2016/11/30",
+            "2017/03/02",
+            "2017/03/19",
+            "2017/02/10"
+          ]
+        }
+        js.holidays.forEach(function (element) {
+          var tempDate = new Date(element.split('/')[0], element.split('/')[1] - 1, element.split('/')[2], 0, 0, 0, 0);
+          var i = tempDate.getTime();
+          if (tempDate.toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1] == 'GMT+0430 (Iran Daylight Time)') {
+            i = tempDate.setHours(0, 0, 0, 0);
+
+          }
+          $rootScope.holiDays.push(i);
+        });
+
       }
-      if($rootScope.holiDays.length == 0){
+      if ($rootScope.holiDays.length == 0) {
         getHoliDays();
       }
-     
+
       $scope.checkHoliday = function (input) {
         if ($rootScope.holiDays.length > 0 && input != null) {
-            if($rootScope.holiDays.indexOf(input)> -1){        
-               return true;
-            }     
+          if ($rootScope.holiDays.indexOf(input) > -1) {
+            return true;
           }
-          return false;
-       }
+        }
+        return false;
+      }
       //Reset the hours, minutes, seconds and milli seconds
       function resetHMSM(currentDate) {
         currentDate.setHours(0);
